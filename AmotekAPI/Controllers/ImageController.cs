@@ -14,8 +14,8 @@ namespace AmotekAPI.Controllers
         public ImageController(IpfsService ipfsService) {
             ipfsService = ipfsService;
         }
-
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> UploadImage(IFormFile imageFile)
         {
             if (imageFile == null || imageFile.Length <= 0)
@@ -30,6 +30,7 @@ namespace AmotekAPI.Controllers
             }
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> DownloadImage(string imageHash)
         {
             var imageStream = await ipfsService.DownloadImageAsync(imageHash);
