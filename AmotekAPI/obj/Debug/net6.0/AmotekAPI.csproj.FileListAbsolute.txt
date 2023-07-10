@@ -87,3 +87,11 @@ C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Syste
 C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Common.Logging.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Common.Logging.Core.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Ipfs.Api.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Ipfs.Core.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\manom\Desktop\Amotek\API\AmotekTestAPI\AmotekAPI\bin\Debug\net6.0\SimpleBase.dll

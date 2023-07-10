@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AmotekAPI.Interfaces;
+using AmotekAPI.Services;
+using Ipfs.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmotekAPI.Controllers
@@ -7,41 +10,33 @@ namespace AmotekAPI.Controllers
     [Route("[controller]")]
     public class ImageController : Controller
     {
+        private IpfsService ipfsService;
+        public ImageController(IpfsService ipfsService) {
+            ipfsService = ipfsService;
+        }
 
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile imageFile)
         {
             if (imageFile == null || imageFile.Length <= 0)
+                return BadRequest("Image file is required.");
+
+            using (var memoryStream = new MemoryStream())
             {
-                return BadRequest("No image file uploaded.");
+                await imageFile.CopyToAsync(memoryStream);
+                var imageHash = await ipfsService.UploadImageAsync(memoryStream);
+
+                return Ok(new { ImageHash = imageHash });
             }
-
-            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
-            var filePath = Path.Combine("path/to/your/image/folder", uniqueFileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(stream);
-            }
-
-            // Optionally, you can save the uniqueFileName or other metadata in a database for future reference
-
-            return Ok("Image uploaded successfully.");
         }
-        [HttpGet("{imageName}")]
-        public IActionResult DownloadImage(string imageName)
+        [HttpGet]
+        public async Task<IActionResult> DownloadImage(string imageHash)
         {
-            var filePath = Path.Combine("path/to/your/image/folder", imageName);
+            var imageStream = await ipfsService.DownloadImageAsync(imageHash);
+            if (imageStream == null)
+                return NotFound();
 
-            if (!System.IO.File.Exists(filePath))
-            {
-                return NotFound("Image not found.");
-            }
-
-            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            var fileType = "application/octet-stream"; // Set the appropriate content type based on your image format
-
-            return File(fileStream, fileType);
+            return File(imageStream, "image/jpeg");
         }
     }
 }

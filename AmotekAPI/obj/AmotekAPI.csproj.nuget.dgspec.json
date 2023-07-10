@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[1.2.0, )"
             },
+            "Ipfs.Api": {
+              "target": "Package",
+              "version": "[0.23.6, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.19, )"
